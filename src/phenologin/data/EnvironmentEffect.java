@@ -6,6 +6,7 @@ package phenologin.data;
 
 /**
  * @author William A. Norman (LordCrekit@gmail.com, normanwi@msu.edu)
+ * 
  */
 public class EnvironmentEffect {
 

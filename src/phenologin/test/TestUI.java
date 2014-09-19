@@ -17,7 +17,7 @@ import phenologin.PhenoLoginUI;
 public class TestUI extends JFrame{
     public static void main( String[] args ) throws Exception{
         TestUI t = new TestUI();
-        t.setSize( 500, 500 );
+        t.setSize( 300, 80 );
         t.setLocationRelativeTo( null );
         t.setVisible( true );
     }
@@ -26,7 +26,10 @@ public class TestUI extends JFrame{
         JPanel jp = new JPanel();
         jp.add( new JButton( "Test" ){{
             addActionListener( e -> {
-                new PhenoLoginUI( TestUI.this, true ).setVisible( true );
+                PhenoLoginUI plui = new PhenoLoginUI( TestUI.this, true );
+                plui.setLocationRelativeTo( TestUI.this );
+                plui.setVisible(true);
+                setTitle( "return value: " + plui.getReturnValue() );
             });
         }});
         setContentPane( jp );

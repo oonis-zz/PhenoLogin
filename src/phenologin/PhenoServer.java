@@ -5,6 +5,7 @@
  */
 package phenologin;
 
+import phenologin.data.Experiment;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
