@@ -69,11 +69,11 @@ public class PhenoLoginUI extends javax.swing.JDialog {
         return jReturnVal;
     }
 
-    PhenoServer getServer() {
+    public PhenoServer getServer() {
         return jServer;
     }
 
-    PhenoUser getUser() {
+    public PhenoUser getUser() {
         return jUser;
     }
 
@@ -265,10 +265,19 @@ public class PhenoLoginUI extends javax.swing.JDialog {
 
         setStatus("Connecting...", 0);
         if (txt != null || "".equals(txt)) {
+            
+            //debug
+            System.out.println( "raw json: \n" + txt );
+            
             JsonParser parser = Json.createParser(new StringReader(txt));
             while (parser.hasNext()) {
                 while (parser.hasNext()) {
-                    if (parser.next() == Event.KEY_NAME) {
+                    Event event = parser.next();
+                    
+                    //debug
+                    System.out.println( "eventName: " + event.name() );
+                    
+                    if (event == Event.KEY_NAME) {
                         switch (parser.getString()) {
                             case "user_id":
                                 parser.next();
