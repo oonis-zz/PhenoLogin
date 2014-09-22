@@ -7,10 +7,12 @@ package phenologin.test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -71,11 +73,41 @@ public class ExperimentPicker extends JFrame{
                 };
                 JTable table = new JTable(dataModel);
                 
+                table.addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        int row = table.rowAtPoint(evt.getPoint());
+                        int col = table.columnAtPoint(evt.getPoint());
+                        if (row >= 0 && col >= 0) 
+                            launchExpDetails( expList.get( row ) );
+                    }
+                });
+                
                 jp.removeAll();
                 jp.add( new JScrollPane( table ) );
             });
         }});
         
         setContentPane( jp );
+    }
+    
+    private void launchExpDetails( Experiment exp ){
+        JFrame jf = new JFrame();
+        JEditorPane jep = new JEditorPane( "text/html", "" );
+        StringBuilder sb = new StringBuilder();
+        sb.append( "<html>" );
+        
+        sb.append( "strings:" );
+        sb.append( "<table><tr><th>key</th><th>value</th></tr>" );
+        for( Entry< String, String > e : exp.stringMap.entrySet() )
+            sb.append( "<tr><td>" + e.getKey() + "</td><td>" + e.getValue() + "</td></tr>" );
+        sb.append( "</table>" );
+        
+        sb.append( "</html>" );
+        jep.setText( sb.toString() );
+        jf.setContentPane( jep );
+        jf.setSize( 500, 500 );
+        jf.setLocationRelativeTo( null );
+        jf.setVisible( true );
     }
 }

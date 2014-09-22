@@ -148,8 +148,6 @@ public class PhenoLoginUI extends javax.swing.JDialog {
 
         jTextField_Email.setText("savage@msu.edu");
 
-        jPasswordField1.setText("12345678");
-
         jLabel1.setText("Email:");
 
         jLabel2.setText("Password:");
