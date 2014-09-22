@@ -146,6 +146,10 @@ public class PhenoLoginUI extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        jTextField_Email.setText("savage@msu.edu");
+
+        jPasswordField1.setText("12345678");
+
         jLabel1.setText("Email:");
 
         jLabel2.setText("Password:");
@@ -289,6 +293,7 @@ public class PhenoLoginUI extends javax.swing.JDialog {
                             case "authentication_token":
                                 parser.next();
                                 jServer = new PhenoServer();
+                                jServer.addListener( (s,i) -> setStatus(s,i) );
                                 jServer.setToken(parser.getString());
                                 break;
                         }

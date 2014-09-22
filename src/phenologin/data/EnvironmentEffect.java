@@ -4,113 +4,30 @@
  */
 package phenologin.data;
 
-/**
- * @author William A. Norman (LordCrekit@gmail.com, normanwi@msu.edu)
- * 
- */
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class EnvironmentEffect {
-
-    /*
-     * ================================================ MEMBER VARIABLES ================================================
-     */
-    private String jType = "";
-    private int jConstantValue = -1;
-    private int jMaxValue = -1;
-    private int jMinValue = -1;
-    private boolean jIsPreset = false;
-    private int jFluctuatingDayFactor = -1;
-    private String jComment = null;
-
-    /*
-     * ================================================== CONSTRUCTORS ==================================================
-     */
-    /**
-     * Default Constructor for EnvironmentEffect.
-     */
-    public EnvironmentEffect() {
+    
+    private static final String[] stringKeys = {};
+    private static final String[] intKeys = {};
+    private static final String[] boolKeys = {};
+    private static final String[] envKeys = {};
+    
+    public static boolean isStringKey( String s ){ return isContained( s, stringKeys ); }
+    public static boolean isIntKey( String s ){ return isContained( s, intKeys ); }
+    public static boolean isBoolKey( String s ){ return isContained( s, boolKeys ); }
+    public static boolean isEnvKey( String s ){ return isContained( s, envKeys ); }
+    private static boolean isContained( String s, String[] arr ){
+        for( String a : arr )
+            if( a.equals( s ) )
+                return true;
+        return false;
+    }
         
-    }
-
-    /*
-     * ================================================ PRIMARY FUNCTIONS ===============================================
-     */
-
-    /*
-     * ================================================ GETTERS & SETTERS ===============================================
-     */
-    /**
-     *
-     * @return
-     */
-    public String getType() {
-        return jType;
-    }
-
-    /**
-     *
-     * @param type
-     */
-    public void setType(String type) {
-        jType = type;
-    }
-
-    public int getConstantValue() {
-        return jConstantValue;
-    }
-
-    public void setConstantValue(int value) {
-        jConstantValue = value;
-    }
-
-    public int getMaxValue() {
-        return jMaxValue;
-    }
-
-    public void setMaxValue(int value) {
-        jMaxValue = value;
-    }
-
-    public int getMinValue() {
-        return jMinValue;
-    }
-
-    public void setMinValue(int value) {
-        jMinValue = value;
-    }
-
-    public boolean getIsPreset() {
-        return jIsPreset;
-    }
-
-    public void setIsPreset(boolean preset) {
-        jIsPreset = preset;
-    }
-
-    public int getFluctuatingDayFactor() {
-        return jFluctuatingDayFactor;
-    }
-
-    public void setFluctuatingDayFactor(int factor) {
-        jFluctuatingDayFactor = factor;
-    }
-
-    public String getComment() {
-        return jComment;
-    }
-
-    public void setComment(String comment) {
-        jComment = comment;
-    }
-
-    /*
-     * =============================================== MODIFIER FUNCTIONS ===============================================
-     */
-
-    /*
-     * ================================================ VISUAL FUNCTIONS ================================================
-     */
-
-    /*
-     * ================================================ PRIVATE FUNCTIONS ===============================================
-     */
+    //START INSTANCE VARIABLES
+    public final Map< String, String > stringMap = new HashMap();
+    public final Map< String, Integer > intMap = new HashMap();
+    public final Map< String, Boolean > boolMap = new HashMap();
 }
