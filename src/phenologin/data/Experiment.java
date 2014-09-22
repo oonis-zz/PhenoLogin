@@ -12,14 +12,33 @@ import javax.json.stream.JsonParser.Event;
 
 public class Experiment{
     
-    private static final String[] stringKeys = { "approved_at", "archived_at", "completed_at", "created_at", "name", "photoperiod", "start_at", "state", "updated_at", 
-    "collaborator_name", "script_url", "jobs_count" };
-    private static final String[] intKeys = { "duration", "id", "imager_id", "archived_by", "max_co2", "max_humidity", "max_light", "max_temperature", "min_co2", "min_humidity", "min_light", "min_temperature",
-    "plant_age_at", "temp", "user_id", "institute_id", "collaborator_id", };
-    private static final String[] boolKeys = { "is_basic", "is_perturb" };
-    private static final String[] envKeys = { "co2", "humidity", "light", };
-    private static final String[] arrKeys = { "experiment_jobs", "germplasms" };
-    private static final String[] objKeys = { "imager" };
+    private static final String[] stringKeys = { 
+        "approved_at", "archived_at", "completed_at", "created_at", "name", 
+        "photoperiod", "start_at", "state", "updated_at", 
+        "collaborator_name", "script_url", "jobs_count" 
+    };
+    
+    private static final String[] intKeys = { 
+        "duration", "id", "imager_id", "archived_by", "max_co2", "max_humidity", 
+        "max_light", "max_temperature", "min_co2", "min_humidity", "min_light", "min_temperature",
+        "plant_age_at", "temp", "user_id", "institute_id", "collaborator_id", 
+    };
+    
+    private static final String[] boolKeys = { 
+        "is_basic", "is_perturb" 
+    };
+    
+    private static final String[] envKeys = { 
+        "co2", "humidity", "light", 
+    };
+    
+    private static final String[] arrKeys = { 
+        "experiment_jobs", "germplasms" 
+    };
+    
+    private static final String[] objKeys = { 
+        "imager" 
+    };
     
     public static boolean isStringKey( String s ){ return isContained( s, stringKeys ); }
     public static boolean isIntKey( String s ){ return isContained( s, intKeys ); }
@@ -41,23 +60,4 @@ public class Experiment{
     public final Map< String, EnvironmentEffect > envMap = new HashMap();   
     public final Map< String, List< Map< String, Object > > > arrMap = new HashMap();   
     public final Map< String, Map< String, Object > > objMap = new HashMap();   
-    
-//    public static class ExpObject{
-//        public final ExpObject parent;
-//        public final Event event;
-//        public final Object content;
-//        public final List< ExpObject > children = new ArrayList();
-//        
-//        public ExpObject( Event event ){ this( event, null ); }
-//        
-//        public ExpObject( Event event, ExpObject parent ){
-//            this( event, parent, null );
-//        }
-//        
-//        public ExpObject( Event event, ExpObject parent, Object content ){
-//            this.event = event;
-//            this.parent = parent;
-//            this.content = content;
-//        }
-//    }
 }

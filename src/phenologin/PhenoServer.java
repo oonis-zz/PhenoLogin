@@ -21,6 +21,7 @@ import static javax.json.stream.JsonParser.Event.START_OBJECT;
 import static javax.json.stream.JsonParser.Event.VALUE_FALSE;
 import static javax.json.stream.JsonParser.Event.VALUE_NULL;
 import static javax.json.stream.JsonParser.Event.VALUE_TRUE;
+import javax.json.stream.JsonParsingException;
 import phenologin.data.EnvironmentEffect;
 import phenologin.network.Network;
 
@@ -49,7 +50,7 @@ public class PhenoServer {
     /*
      * ================================================ PRIMARY FUNCTIONS ===============================================
      */
-    public Experiment getExperiment( int id ) {
+    public Experiment getExperiment( int id ) throws JsonParsingException{
         updateStatus( "parsing json for experiment with id " + id, 0 );
         
         String toParse = Network.getExperiment(jAuthenticationToken,id);
